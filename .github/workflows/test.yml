@@ -1,0 +1,31 @@
+name: Shell Script Tests
+
+# プッシュとプルリクエスト時に実行
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # リポジトリのチェックアウト
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # スクリプトに実行権限を付与
+      - name: Make scripts executable
+        run: |
+          chmod +x hello.sh
+          chmod +x test.sh
+      
+      # テストの実行
+      - name: Run tests
+        run: ./test.sh
+      
+      # テスト成功時のメッセージ
+      - name: Test completed
+        run: echo "All tests passed successfully!"
