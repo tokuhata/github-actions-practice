@@ -1,0 +1,22 @@
+name: Hello World
+
+# pushイベントで実行
+on: [push]
+
+jobs:
+  greeting:
+    # Ubuntu最新版で実行
+    runs-on: ubuntu-latest
+    
+    steps:
+      # ステップ1: メッセージ表示
+      - name: Say Hello
+        run: echo "Hello, GitHub Actions!"
+      
+      # ステップ2: 日時表示
+      - name: Show Date
+        run: date
+      
+      # ステップ3: システム情報表示
+      - name: Show System Info
+        run: uname -a
