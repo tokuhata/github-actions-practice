@@ -6,3 +6,7 @@
 
 - Git
 - GitHub CLI (gh)
+
+## 次のステップ
+
+GitHub Actionsについて学ぶ。
