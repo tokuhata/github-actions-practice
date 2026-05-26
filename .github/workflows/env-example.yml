@@ -1,0 +1,32 @@
+name: Environment Variables Example
+
+on: [push]
+
+# ワークフローレベルの環境変数
+env:
+  GLOBAL_VAR: "グローバル変数"
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    
+    # ジョブレベルの環境変数
+    env:
+      JOB_VAR: "ジョブ変数"
+    
+    steps:
+      - name: Show environment variables
+        # ステップレベルの環境変数
+        env:
+          STEP_VAR: "ステップ変数"
+        run: |
+          echo "グローバル変数: $GLOBAL_VAR"
+          echo "ジョブ変数: $JOB_VAR"
+          echo "ステップ変数: $STEP_VAR"
+          
+      # GitHubが提供するデフォルト変数
+      - name: Show GitHub variables
+        run: |
+          echo "リポジトリ名: ${{ github.repository }}"
+          echo "ブランチ名: ${{ github.ref }}"
+          echo "イベント名: ${{ github.event_name }}"

@@ -1,0 +1,22 @@
+name: Matrix Build
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04]
+        script-version: ['v1', 'v2']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Show environment
+        run: |
+          echo "OS: ${{ matrix.os }}"
+          echo "Version: ${{ matrix.script-version }}"
+          echo "System: $(uname -a)"
